@@ -87,11 +87,7 @@ router.delete('/author/:id',auth.userAuth,auth.adminAuth,async(req,res)=>{
 })
 router.get('/profile',auth.userAuth,async(req,res)=>{
     try{
-        const author = await Author.findById(req.author._id)
-        if(!author){
-            return res.status(404).send('not found plz login')
-        }
-        res.status(200).send(author)
+        res.status(200).send(req.author)
     }
     catch(e){
         res.status(500).send(e.message)
