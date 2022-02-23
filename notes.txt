@@ -1,0 +1,16 @@
+1- authors ==>name  
+              age
+              address
+              password
+              email
+              phone   egypt phone number only 11 number only (regex or  validator(ismobilephone))
+
+        logic (sign up - login -  log out )
+        get    profile
+        patch  proile
+        delete profile
+
+2-news  ==  >authorId(owner)
+             title
+             description
+             image ---- not now 
