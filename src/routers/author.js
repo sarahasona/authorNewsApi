@@ -177,4 +177,15 @@ router.delete('/logout',auth.userAuth,async(req,res)=>{
         res.status(500).send(e.message)
     }
 })
+/////////////////////////////////////////////////////////////
+router.delete('/logoutAll',auth.userAuth,async(req,res)=>{
+    try{
+        req.author.tokens = []
+        await req.author.save()
+        res.status(200).send('log out from all devices successfuly')
+    }
+    catch(e){
+        res.status(500).send(e.message)
+    }
+})
 module.exports = router
