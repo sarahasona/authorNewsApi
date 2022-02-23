@@ -132,18 +132,14 @@ router.post('/profile/image',auth.userAuth,upload.single('image'),async(req,res)
 //edit profile
 router.patch('/profile',auth.userAuth,async(req,res)=>{
     try{
-        const author = await Author.findById(req.author._id)
-        if(!author){
-            return res.status(404).send('no author plz try again')
-        }
         const updatesKeys = Object.keys(req.body)
         updatesKeys.forEach((ele)=>{
             //ele==>name
             //author[name] = req.body[name]
-            author[ele] = req.body[ele]
+            req.author[ele] = req.body[ele]
         })
-        await author.save()
-        res.status(200).send(author)
+        await req.author.save()
+        res.status(200).send(req.author)
     }
     catch(e){
         res.status(400).send(e.message)
