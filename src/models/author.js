@@ -72,8 +72,16 @@ const authorSchema = new mongoose.Schema({
             type:String,
             required:true
         }
-    ]
+    ],
+    
 
+},{
+    timestamps:{
+        createdAt:true,
+        updatedAt:true,
+        currentTime: () => Date.now()
+    }
+    
 })
 //authorScehma.statics  ===> on model
 authorSchema.statics.findByCredintals = async (email,password)=>{
